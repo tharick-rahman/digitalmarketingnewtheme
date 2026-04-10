@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | NexGen Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div id="global-loader"><div class="spinner"></div></div>
+
+    <header>
+        <a href="index.html" class="logo">
+          <img src="assets/images/stack logo.png" alt="ss">
+        </a>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card animate-on-scroll" style="opacity: 1; transform: translateY(0);">
+            <h2>Welcome <span class="text-gradient">Back</span></h2>
+            <p>Access your marketing dashboard</p>
+
+            <form id="login-form" class="auth-form">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@company.com">
+                    <div class="error-text" id="login-email-error">Please enter a valid email</div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••">
+                    <div class="error-text" id="login-pwd-error">Please enter your password</div>
+                </div>
+                <div class="input-group">
+                    <label for="role">Select Role</label>
+                    <select id="role">
+                        <option value="User">Client / User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Login Now</button>
+            </form>
+
+            <div class="auth-switch">
+                Don't have an account? <a href="signup.html">Create Account</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // the global script.js handles the submit event routing, but we will add strict validation here first.
+        const loginForm = document.getElementById('login-form');
+        if(loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+                // Note: script.js also attaches an event listener. To prevent conflict, we handle validation first.
+                // Wait, script.js routes directly if inputs aren't empty. Let's override it or just do basic validation.
+                const email = document.getElementById('email').value;
+                const pwd = document.getElementById('password').value;
+                
+                let isValid = true;
+                if(!email.includes('@')) {
+                    document.getElementById('login-email-error').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('login-email-error').style.display = 'none';
+                }
+
+                if(!pwd) {
+                    document.getElementById('login-pwd-error').style.display = 'block';
+                    isValid = false;
+                } else {
+                    document.getElementById('login-pwd-error').style.display = 'none';
+                }
+
+                // If valid, script.js handles redirect gracefully, but to be safe we can force it:
+                if(isValid) {
+                    const role = document.getElementById('role').value;
+                    localStorage.setItem('currentUserRole', role);
+                    // SPA navigation handled by script.js but we can trigger it directly
+                    window.location.href = 'dashboard.html';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

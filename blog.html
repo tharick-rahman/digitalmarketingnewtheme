@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | NexGen Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+    <div id="global-loader"><div class="spinner"></div></div>
+
+    <header>
+        <a href="index.html" class="logo">
+          <img src="assets/images/stack logo.png" alt="ss">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html" class="nav-cta">Login</a>
+        </nav>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Header -->
+        <section class="page-header animate-on-scroll">
+            <div class="container">
+                <h1>Marketing <span class="text-gradient">Insights</span></h1>
+                <p>Growth hacking strategies, SEO tips, and industry news.</p>
+            </div>
+        </section>
+
+        <!-- 2. Featured Article -->
+        <section class="featured-blog container animate-on-scroll;">
+            <div class="glass-card" style="display: flex; flex-wrap: wrap; gap: 30px; padding: 0; overflow: hidden; border-color: var(--neon-purple);">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="assets/images/twoo.webp" alt="Featured Post" style="width: 100%; height: 100%; object-fit: cover; min-height: 300px;">
+                </div>
+                <div style="flex: 1; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; min-width: 300px;">
+                    <span class="blog-category" style="color: var(--neon-blue); font-weight: bold; margin-bottom: 15px; text-transform: uppercase;">Featured Report</span>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 20px;">The 2026 Digital Marketing Benchmark Report</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.8;">We analyzed over $500M in ad spend across 40 industries to find out exactly what is working (and what's dying) this year. Dive deep into the data with our exclusive report.</p>
+                    <div>
+                        <button class="btn btn-primary" onclick="openBlogModal('annual-report')">Read Full Report</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Controls & Grid -->
+        <section class="blog-main container animate-on-scroll">
+            <div class="blog-controls">
+                <div class="category-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="seo">SEO</button>
+                    <button class="filter-btn" data-filter="ads">Ads</button>
+                    <button class="filter-btn" data-filter="social">Social Media</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="blog-search" placeholder="Search articles...">
+                </div>
+            </div>
+
+            <div class="blog-grid" id="blog-grid">
+                <!-- Post 1 -->
+                <div class="blog-card" data-category="seo" onclick="openBlogModal('seo-trend')">
+                    <img src="assets/images/one.webp" alt="Blog Image" class="blog-img">
+                    <div class="blog-content">
+                        <span class="blog-category">SEO</span>
+                        <h3>2026 SEO Trends You Can't Ignore</h3>
+                        <p>Discover the algorithm changes shaping the future of search. From AI Overviews to core web vitals adjustments.</p>
+                        <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Read More</button>
+                    </div>
+                </div>
+                <!-- Post 2 -->
+                <div class="blog-card" data-category="ads" onclick="openBlogModal('tiktok-ads')">
+                    <img src="assets/images/twoo.webp" alt="Blog Image" class="blog-img">
+                    <div class="blog-content">
+                        <span class="blog-category">Ads</span>
+                        <h3>Mastering TikTok Ads for B2B</h3>
+                        <p>Who said short form video is just for consumer brands? Here is how B2B companies are crushing it.</p>
+                        <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Read More</button>
+                    </div>
+                </div>
+                <!-- Post 3 -->
+                <div class="blog-card" data-category="social" onclick="openBlogModal('social-growth')">
+                    <img src="assets/images/hero  11.webp" alt="Blog Image" class="blog-img">
+                    <div class="blog-content">
+                        <span class="blog-category">Social Media</span>
+                        <h3>Organic Growth in a Pay-to-Play World</h3>
+                        <p>Learn the exact framework we use to generate millions of organic impressions without spending a dime.</p>
+                        <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Read More</button>
+                    </div>
+                </div>
+                 <!-- Post 4 -->
+                 <div class="blog-card" data-category="seo" onclick="openBlogModal('local-seo')">
+                    <img src="assets/images/four.webp" alt="Blog Image" class="blog-img">
+                    <div class="blog-content">
+                        <span class="blog-category">SEO</span>
+                        <h3>Local SEO Domination Guide</h3>
+                        <p>If you're a local business, this is the only guide you need to dominate the Google Map Pack.</p>
+                        <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Read More</button>
+                    </div>
+                </div>
+                <!-- Post 5 -->
+                <div class="blog-card" data-category="ads" onclick="openBlogModal('meta-ads')">
+                    <img src="assets/images/hero  11.webp" alt="Blog Image" class="blog-img">
+                    <div class="blog-content">
+                        <span class="blog-category">Ads</span>
+                        <h3>Scaling Meta Ads to $10k/day</h3>
+                        <p>The structure, creatives, and exact rules we use to scale accounts without breaking ROAS limits.</p>
+                        <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Read More</button>
+                    </div>
+                </div>
+                <!-- Post 6 -->
+                <div class="blog-card" data-category="social" onclick="openBlogModal('brand-voice')">
+                    <img src="assets/images/one.webp" alt="Blog Image" class="blog-img">
+                    <div class="blog-content">
+                        <span class="blog-category">Social Media</span>
+                        <h3>Finding Your Brand's Authentic Voice</h3>
+                        <p>How to transition from corporate speak to a relatable, authentic social presence that builds community.</p>
+                        <button class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Newsletter Subscription -->
+        <section class="newsletter container animate-on-scroll" style="margin-top: 80px; margin-bottom: 80px;">
+            <div class="glass-card" style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, rgba(0,243,255,0.05), rgba(188,19,254,0.05)); border: 1px solid var(--neon-blue);">
+                <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Join the <span class="text-gradient">Top 1%</span></h2>
+                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem;">Subscribe to our weekly newsletter for exclusive growth tactics and industry insights delivered straight to your inbox. No fluff, just actionable data.</p>
+                <form onsubmit="event.preventDefault(); alert('Subscribed directly to our growth feed! Check your inbox.'); this.reset();" style="display: flex; max-width: 500px; margin: 0 auto; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                    <input type="email" placeholder="Enter your email address" required style="flex: 1; padding: 15px 25px; border-radius: 30px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); color: #fff; min-width: 250px; outline: none;">
+                    <button type="submit" class="btn btn-primary" style="margin: 0;">Subscribe</button>
+                </form>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 20px;">Join 45,000+ marketers. Unsubscribe anytime.</p>
+            </div>
+        </section>
+
+        <!-- 5. Modal -->
+        <div class="modal-overlay" id="blog-modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeBlogModal()">&times;</button>
+                <div class="modal-body" id="modal-body-content">
+                    <!-- Dynamic content will load here -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+   
+
+    <script src="script.js"></script>
+
+    <script>
+        // Adding local modal logic strictly for this page so script.js stays light, 
+        // since script.js SPA loads it anyway.
+        // Wait, since SPA navigation swaps innerHTML of main, inline scripts in body aren't executed by default by some SPA loaders. 
+        // Let's add it carefully. The SPA logic in `script.js` uses DOMParser and replaces main.
+        // It DOES NOT execute inline scripts natively unless we eval.
+        // Let's implement global functions in window.
+        window.openBlogModal = function(id) {
+            const modal = document.getElementById('blog-modal');
+            const content = document.getElementById('modal-body-content');
+            if(modal && content) {
+                // Mock db logic
+                content.innerHTML = `
+                    <img src="assets/images/blog1.webp" alt="Blog Header">
+                    <p class="meta">Published By NexGen Editorial</p>
+                    <h2>Article Details</h2>
+                    <p>This is a dynamically loaded placeholder text for the blog article modal. In a real-world scenario, this content would be fetched from a CMS or an API endpoint based on the ID passed: ${id}.</p>
+                    <p>We leverage cutting-edge techniques to bring you to the forefront of your industry. Consistency, data, and creativity are the pillars of what we do. Read more of our exclusive content and stay ahead.</p>
+                `;
+                modal.classList.add('active');
+            }
+        };
+
+        window.closeBlogModal = function() {
+            const modal = document.getElementById('blog-modal');
+            if(modal) {
+                modal.classList.remove('active');
+            }
+        };
+
+        // Filters handled via event listener to avoid inline issues
+        document.addEventListener('click', e => {
+            if(e.target.classList.contains('filter-btn')) {
+                const filter = e.target.getAttribute('data-filter');
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                const cards = document.querySelectorAll('.blog-card');
+                cards.forEach(card => {
+                    if(filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Close modal on outside click
+            const modal = document.getElementById('blog-modal');
+            if(e.target === modal) {
+                closeBlogModal();
+            }
+        });
+    </script>
+</body>
+</html>

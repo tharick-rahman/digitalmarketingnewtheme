@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | NexGen Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div id="global-loader"><div class="spinner"></div></div>
+
+    <div class="dashboard-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <a href="index.html" class="sidebar-logo">
+                <img src="assets/images/stack logo.png" alt="ss">
+            </a>
+            
+            <!-- Dynamic Navigation Links -->
+            <nav class="sidebar-nav" id="sidebar-nav">
+                <!-- User Nav -->
+                <div id="nav-user" style="display:none;">
+                    <a href="404.html" class="active">Overview</a>
+                    <a href="404.html">Saved Blogs</a>
+                    <a href="404.html">Activity History</a>
+                    <a href="404.html">Billing</a>
+                    <a href="404.html">My Profile</a>
+                </div>
+                <!-- Admin Nav -->
+                <div id="nav-admin" style="display:none;">
+                    <a href="404.html" class="active">Analytics Overview</a>
+                    <a href="404.html">Manage Users</a>
+                    <a href="404.html">Blog Posts</a>
+                    <a href="404.html">Campaigns</a>
+                    <a href="404.html">System Settings</a>
+                </div>
+            </nav>
+
+            <a href="login.html" class="logout-btn" onclick="localStorage.removeItem('currentUserRole')">Log Out</a>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header class="top-header">
+                <button class="mobile-toggle" id="mobile-toggle">☰</button>
+                <div class="user-profile">
+                    <div style="text-align: right;">
+                        <div id="user-name" style="font-weight: 600;">Loading...</div>
+                        <div id="user-role-label" style="font-size: 0.85rem; color: var(--text-muted);">Role</div>
+                    </div>
+                 
+                </div>
+            </header>
+
+            <!-- ================= USER DASHBOARD ================= -->
+            <div id="user-dashboard" style="display: none;">
+                <h2>Welcome back, Client!</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">Here is your account overview and recent campaign data.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Active Campaigns</h4>
+                        <div class="value">2</div>
+                        <div class="trend">+1 this month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Spend</h4>
+                        <div class="value">$12.5K</div>
+                        <div class="trend" style="color: var(--neon-purple);">-5% vs last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Conversions</h4>
+                        <div class="value">342</div>
+                        <div class="trend" style="color: var(--neon-blue);">+18% conversion rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Saved Blogs</h4>
+                        <div class="value">14</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid" style="margin-bottom: 30px;">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Your Activity History</h3>
+                            <button class="btn btn-outline" style="padding: 5px 15px;">Filter</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Updated Billing Info</td>
+                                    <td>Today, 10:45 AM</td>
+                                    <td><span class="status active">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Saved Article "SEO Trends"</td>
+                                    <td>Yesterday, 2:00 PM</td>
+                                    <td><span class="status active">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Approved Ad Creative #A4</td>
+                                    <td>Oct 12, 4:15 PM</td>
+                                    <td><span class="status active">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Campaign "Holiday Push" Launch</td>
+                                    <td>Oct 10, 9:00 AM</td>
+                                    <td><span class="status" style="border: 1px solid var(--neon-purple); color: var(--neon-purple);">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Recommendations</h3>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon" style="background: rgba(0, 243, 255, 0.2); color: var(--neon-blue);">📈</div>
+                            <div>
+                                <h4>Scale Facebook Ads</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Increase budget by 20%</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon" style="background: rgba(188, 19, 254, 0.2); color: var(--neon-purple);">🎯</div>
+                            <div>
+                                <h4>Optimize Landing Page</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">High bounce rate detected</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon" style="background: rgba(255, 255, 255, 0.1); color: #fff;">📝</div>
+                            <div>
+                                <h4>Read: A/B Testing</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">New blog post available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="panel" style="grid-column: 1 / -1;">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Recent Invoices</h3>
+                            <button class="btn btn-outline" style="padding: 5px 15px;">View All</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Invoice #</th>
+                                    <th>Amount</th>
+                                    <th>Date Issued</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>INV-2026-041</td>
+                                    <td>$3,499.00</td>
+                                    <td>Oct 1, 2026</td>
+                                    <td><span class="status active">Paid</span></td>
+                                    <td><button style="background:transparent; color:var(--neon-blue); border:none; cursor:pointer; text-decoration:underline;">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td>INV-2026-032</td>
+                                    <td>$3,499.00</td>
+                                    <td>Sep 1, 2026</td>
+                                    <td><span class="status active">Paid</span></td>
+                                    <td><button style="background:transparent; color:var(--neon-blue); border:none; cursor:pointer; text-decoration:underline;">Download</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= ADMIN DASHBOARD ================= -->
+            <div id="admin-dashboard" style="display: none;">
+                <h2>Admin Dashboard</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">System overview and global analytics.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Total ARR</h4>
+                        <div class="value">$1.2M</div>
+                        <div class="trend" style="color: #00f3ff;">+15% vs last year</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Active Clients</h4>
+                        <div class="value">342</div>
+                        <div class="trend" style="color: #00f3ff;">+12 new this month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Platform Traffic</h4>
+                        <div class="value">8.5M</div>
+                        <div class="trend" style="color: var(--neon-purple);">+200K visitors</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Open Support Tickets</h4>
+                        <div class="value">4</div>
+                        <div class="trend" style="color: #fe133e;">-2 resolved</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid" style="margin-bottom: 30px;">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Client Management</h3>
+                            <button class="btn btn-primary" style="padding: 8px 15px; font-size:0.9rem;">+ Add User</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Client / Company</th>
+                                    <th>Plan</th>
+                                    <th>Status</th>
+                                    <th>MRR</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe <br><span style="font-size:0.8rem;color:var(--text-muted)">TechNova Inc.</span></td>
+                                    <td>Growth</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td>$3,499</td>
+                                    <td><button class="btn btn-outline" style="padding:4px 10px; font-size:0.8rem;">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Smith <br><span style="font-size:0.8rem;color:var(--text-muted)">Elevate LLC</span></td>
+                                    <td>Enterprise</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td>$8,500</td>
+                                    <td><button class="btn btn-outline" style="padding:4px 10px; font-size:0.8rem;">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Scott <br><span style="font-size:0.8rem;color:var(--text-muted)">Paper Co.</span></td>
+                                    <td>Startup</td>
+                                    <td><span class="status" style="border: 1px solid #fe133e; color: #fe133e;">Churn Risk</span></td>
+                                    <td>$1,499</td>
+                                    <td><button class="btn btn-outline" style="padding:4px 10px; font-size:0.8rem;">Manage</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h3 class="panel-title">System Logs</h3>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon" style="background: rgba(188, 19, 254, 0.2); color: var(--neon-purple);">⚠</div>
+                            <div>
+                                <h4>API Rate Limit Warning</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Facebook Graph API - 2 mins ago</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon" style="background: rgba(0, 243, 255, 0.2); color: var(--neon-blue);">🚀</div>
+                            <div>
+                                <h4>New Client Onboarded</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">TechNova just paid invoice - 1 hr ago</p>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-icon" style="background: rgba(255, 255, 255, 0.1); color: #fff;">💾</div>
+                            <div>
+                                <h4>Database Backup Complete</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Automated secure backup - 3 hrs ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="panel" style="grid-column: 1 / -1;">
+                        <div class="panel-header">
+                            <h3 class="panel-title">Content Calendar (Blog Management)</h3>
+                            <div>
+                                <button class="btn btn-outline" style="margin-right: 10px;">View Calendar</button>
+                                <button class="btn btn-primary">Draft New Post</button>
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Post Title</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Scheduled For</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mastering TikTok Ads</td>
+                                    <td>Alex Rivera</td>
+                                    <td>Ads</td>
+                                    <td>Published</td>
+                                    <td><span class="status active">Live</span></td>
+                                </tr>
+                                <tr>
+                                    <td>AI in Modern SEO</td>
+                                    <td>Maya Lin</td>
+                                    <td>SEO</td>
+                                    <td>Oct 15, 2026</td>
+                                    <td><span class="status" style="border: 1px solid var(--neon-blue); color: var(--neon-blue);">Scheduled</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Email Deliverability Guide</td>
+                                    <td>David Chen</td>
+                                    <td>Content</td>
+                                    <td>-</td>
+                                    <td><span class="status" style="border: 1px solid var(--text-muted); color: var(--text-muted);">Draft</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Inline script to handle dashboard specific logic independently -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const role = localStorage.getItem('currentUserRole') || 'User'; // Default to User
+            const userNameEl = document.getElementById('user-name');
+            const userRoleEl = document.getElementById('user-role-label');
+            const userDash = document.getElementById('user-dashboard');
+            const adminDash = document.getElementById('admin-dashboard');
+
+            if(role === 'Admin') {
+                userNameEl.innerText = 'Admin User';
+                userRoleEl.innerText = 'Administrator';
+                adminDash.style.display = 'block';
+                document.getElementById('nav-admin').style.display = 'flex';
+                document.getElementById('nav-admin').style.flexDirection = 'column';
+                document.getElementById('nav-admin').style.gap = '15px';
+            } else {
+                userNameEl.innerText = 'Client User';
+                userRoleEl.innerText = 'Client';
+                userDash.style.display = 'block';
+                document.getElementById('nav-user').style.display = 'flex';
+                document.getElementById('nav-user').style.flexDirection = 'column';
+                document.getElementById('nav-user').style.gap = '15px';
+            }
+
+            // Mobile toggle
+            const toggle = document.getElementById('mobile-toggle');
+            const sidebar = document.getElementById('sidebar');
+            if(toggle && sidebar) {
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                });
+            }
+
+            // Remove global loader
+            const loader = document.getElementById('global-loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.classList.add('hide-loader');
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 800);
+                }, 800);
+            }
+        });
+    </script>
+</body>
+</html>

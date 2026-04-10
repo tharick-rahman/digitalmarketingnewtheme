@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | NexGen Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div id="global-loader"><div class="spinner"></div></div>
+
+    <header>
+        <a href="index.html" class="logo">
+          <img src="assets/images/stack logo.png" alt="ss"></a>
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card animate-on-scroll" style="opacity: 1; transform: translateY(0);">
+            <h2>Create <span class="text-gradient">Account</span></h2>
+            <p>Start scaling your business today.</p>
+
+            <form id="signup-form" class="auth-form">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe">
+                    <div class="error-text" id="signup-name-error">Please enter your name</div>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="you@company.com">
+                    <div class="error-text" id="signup-email-error">Please enter a valid email</div>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••">
+                    <div class="error-text" id="signup-pwd-error">Minimum 6 characters required</div>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="••••••••">
+                    <div class="error-text" id="signup-cpwd-error">Passwords do not match</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+
+            <div class="auth-switch">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const signupForm = document.getElementById('signup-form');
+        if(signupForm) {
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const pwd = document.getElementById('password').value;
+                const cpwd = document.getElementById('confirm-password').value;
+                
+                let isValid = true;
+                
+                if(!name.trim()) {
+                    document.getElementById('signup-name-error').style.display = 'block';
+                    isValid = false;
+                } else { document.getElementById('signup-name-error').style.display = 'none'; }
+                
+                if(!email.includes('@')) {
+                    document.getElementById('signup-email-error').style.display = 'block';
+                    isValid = false;
+                } else { document.getElementById('signup-email-error').style.display = 'none'; }
+
+                if(pwd.length < 6) {
+                    document.getElementById('signup-pwd-error').style.display = 'block';
+                    isValid = false;
+                } else { document.getElementById('signup-pwd-error').style.display = 'none'; }
+
+                if(pwd !== cpwd || !cpwd) {
+                    document.getElementById('signup-cpwd-error').style.display = 'block';
+                    isValid = false;
+                } else { document.getElementById('signup-cpwd-error').style.display = 'none'; }
+
+                if(isValid) {
+                    // Default to User role on signup
+                    localStorage.setItem('currentUserRole', 'User');
+                    window.location.href = 'dashboard.html';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NexGen Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <div id="global-loader"><div class="spinner"></div></div>
+
+    <header>
+        <a href="index.html" class="logo">
+          <img src="assets/images/stack logo.png" alt="ss">
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html" class="nav-cta">Login</a>
+        </nav>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Header -->
+        <section class="page-header animate-on-scroll">
+            <div class="container">
+                <h1>Let's <span class="text-gradient">Connect</span></h1>
+                <p>Ready to scale? Drop us a line and our growth experts will be in touch within 24 hours.</p>
+            </div>
+        </section>
+
+        <!-- 2. Form & Info -->
+        <section class="contact-area container">
+            <div class="contact-grid">
+                <!-- Info -->
+                <div class="contact-info animate-on-scroll">
+                    <ul class="contact-info-list">
+                        <li>
+                            <h4>Email Us</h4>
+                            <p>hello@stackly.com</p>
+                        </li>
+                        <li>
+                            <h4>Call Us</h4>
+                            <p>+1 800 555 0199</p>
+                        </li>
+                        <li>
+                            <h4>HQ Location</h4>
+                            <p>128 India <br>tamilnadu, CA 94105</p>
+                        </li>
+                    </ul>
+                    
+                    <h3 style="margin: 40px 0 20px;">Office Hours</h3>
+                    <p style="color:var(--text-muted);">Mon-Fri: 9:00 AM - 6:00 PM PST<br>Sat-Sun: Closed</p>
+                </div>
+
+                <!-- Form -->
+                <div class="glass-card animate-on-scroll">
+                    <form id="contact-form" class="contact-form">
+                        <div class="input-group">
+                            <input type="text" id="name" placeholder="Your Name">
+                            <div class="error-text" id="name-error">Please enter your name</div>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email-contact" placeholder="Email Address">
+                            <div class="error-text" id="email-error">Please enter a valid email</div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="subject" placeholder="Subject">
+                            <div class="error-text" id="subject-error">Please enter a subject</div>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" placeholder="Tell us about your project..."></textarea>
+                            <div class="error-text" id="message-error">Please enter your message</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                    <div id="form-success" style="display:none; color:#00f3ff; margin-top:20px; font-weight:bold; text-align:center;">Message Sent Successfully!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Map Section -->
+        <section class="container animate-on-scroll">
+            <div class="section-head">
+                <h2>Find Us On The <span class="text-gradient">Map</span></h2>
+            </div>
+            <div class="map-section">
+    <iframe 
+        src="https://www.google.com/maps?q=Angondhalli,Karnataka&output=embed"
+        width="100%" 
+        height="400" 
+        style="border:0; border-radius:10px;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+</div>
+            
+        </section>
+
+        <!-- 4. Global Branches -->
+        <section class="branches container animate-on-scroll">
+            <div class="section-head">
+                <h2>Global <span class="text-gradient">Presence</span></h2>
+            </div>
+            <div class="branches-grid">
+                <div class="glass-card">
+                    <h3>London</h3>
+                    <p style="color:var(--text-muted); margin-top:10px;">15 Canary Wharf<br>London, UK</p>
+                </div>
+                <div class="glass-card">
+                    <h3>New York</h3>
+                    <p style="color:var(--text-muted); margin-top:10px;">450 5th Avenue<br>New York, NY 10018</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Sydney</h3>
+                    <p style="color:var(--text-muted); margin-top:10px;">88 George Street<br>Sydney, NSW 2000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FAQ Preview -->
+        
+
+    </main>
+
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            const name = document.getElementById('name');
+            const email = document.getElementById('email-contact');
+            const subject = document.getElementById('subject');
+            const msg = document.getElementById('message');
+
+            const toggleError = (el, show) => {
+                document.getElementById(el.id + '-error').style.display = show ? 'block' : 'none';
+                el.style.borderColor = show ? '#fe133e' : 'rgba(255, 255, 255, 0.1)';
+            };
+
+            if(!name.value.trim()) { toggleError(name, true); isValid = false; } else { toggleError(name, false); }
+            if(!email.value.includes('@')) { toggleError(email, true); isValid = false; } else { toggleError(email, false); }
+            if(!subject.value.trim()) { toggleError(subject, true); isValid = false; } else { toggleError(subject, false); }
+            if(!msg.value.trim()) { toggleError(msg, true); isValid = false; } else { toggleError(msg, false); }
+
+            if(isValid) {
+                const btn = this.querySelector('button');
+                btn.innerHTML = 'Sending...';
+                setTimeout(() => {
+                    this.reset();
+                    btn.innerHTML = 'Send Message';
+                    document.getElementById('form-success').style.display = 'block';
+                    setTimeout(() => document.getElementById('form-success').style.display = 'none', 3000);
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
